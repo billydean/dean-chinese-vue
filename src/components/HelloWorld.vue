@@ -7,6 +7,10 @@ const count = ref(0)
 </script>
 
 <template>
+  <header>
+    <h1>This is a header</h1>
+  </header>
+
   <h1>{{ msg }}</h1>
 
   <div class="card">

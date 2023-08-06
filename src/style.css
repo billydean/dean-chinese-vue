@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/*temporary for style debug*/
+* {
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -1,21 +1,35 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+  import Header from './components/Header.vue'
+  import Result from './components/Result.vue'
+  import Radical from './components/Radical.vue'
+  import Spotlight from './components/Spotlight.vue'
+  import SimilarScreen from './components/SimilarScreen.vue'
+  import Search from './components/Search.vue'
+  import Filter from './components/Filter.vue'
+  import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <header>
-    <h1>This is a header</h1>
-    <nav>This is a nav bar</nav>
-  </header>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <Header />
+  <div>This is the body
+    <Result />
+    <Result />
+    <Result />
+    <Result />
+    <Result />
+    <Result />
+    <Radical />
+    <Radical />
+    <Radical />
+    <Radical />
+    <Radical />
+    <Radical />
+    <Spotlight />
+    <SimilarScreen />
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Search />
+  <Filter />
+  <Footer />
 </template>
 
 <style scoped>

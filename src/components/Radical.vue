@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
+
 <template>
-    <div>Radical</div>
+    <div class="card">Radical</div>
 </template>
-<style></style>
+
+<style scoped>
+
+</style>

@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
+
 <template>
-    <div>Result</div>
+    <div class="card">Result</div>
 </template>
-<style></style>
+
+<style>
+</style>

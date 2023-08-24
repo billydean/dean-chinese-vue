@@ -10,8 +10,9 @@
 </script>
 
 <template>
+  <div class="desk">
   <Header />
-  <div>This is the body
+  <div class="card-deck">This is the body
     <Result />
     <Result />
     <Result />
@@ -30,19 +31,15 @@
   <Search />
   <Filter />
   <Footer />
+  </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+  .desk {
+    width: 80vw;
+  }
+  .card-deck {
+    display: flex;
+    width: 80vw;
+  }
 </style>

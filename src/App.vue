@@ -1,9 +1,8 @@
 <script setup lang="ts">
   import Header from './components/Header.vue'
   import Result from './components/Result.vue'
-  import Radical from './components/Radical.vue'
-  import Spotlight from './components/Spotlight.vue'
-  import SimilarScreen from './components/SimilarScreen.vue'
+  import Spotlight from './components/SingleView.vue'
+  import SimilarScreen from './components/SimilarView.vue'
   import Search from './components/Search.vue'
   import Filter from './components/Filter.vue'
   import Footer from './components/Footer.vue'
@@ -12,24 +11,11 @@
 <template>
   <div class="desk">
   <Header />
-  <div class="card-deck">This is the body
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Spotlight />
-    <SimilarScreen />
-  </div>
+  <!-- 
+  <Spotlight />
+  <SimilarScreen />
   <Search />
-  <Filter />
+  <Filter /> -->
   <Footer />
   </div>
 </template>
@@ -38,8 +24,5 @@
   .desk {
     width: 80vw;
   }
-  .card-deck {
-    display: flex;
-    width: 80vw;
-  }
+
 </style>

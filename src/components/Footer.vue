@@ -11,4 +11,9 @@
     </nav>
   </footer>
 </template>
-<style></style>
+<style scoped>
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+  }
+</style>

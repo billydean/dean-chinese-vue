@@ -24,6 +24,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 80vw;
   }
 </style>

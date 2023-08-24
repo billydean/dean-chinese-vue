@@ -66,12 +66,19 @@ button:focus-visible {
 }
 
 .card {
-  width: 100px;
+  /* width: 100px;
   height: 100px;
-}
+   */
+  width: 18%;
+  min-width: 100px;
+  margin: 1%;
+  /* margin: 5px; */
+  aspect-ratio: 1/1;
+  }
 
 #app {
-  max-width: 1280px;
+  width: 90vw;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;

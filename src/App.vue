@@ -1,37 +1,21 @@
 <script setup lang="ts">
-  import Header from './components/Header.vue'
-  import Result from './components/Result.vue'
-  import Radical from './components/Radical.vue'
-  import Spotlight from './components/Spotlight.vue'
-  import SimilarScreen from './components/SimilarScreen.vue'
-  import Search from './components/Search.vue'
-  import Filter from './components/Filter.vue'
   import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <div class="desk">
-  <Header />
-  <div class="card-deck">
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Radical />
-    <Radical />
-  </div>
-      <Spotlight />
-    <SimilarScreen />
-  <Search />
-  <Filter />
+    <header>
+        <h1>This is a header</h1>
+        <nav>
+          <!-- temporary while I figure out router -->
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/results">Results</RouterLink>
+          <RouterLink to="/radicals">Radicals</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+
+        </nav>
+    </header>
+  <RouterView />
   <Footer />
-  </div>
 </template>
 
 <style scoped>
@@ -44,5 +28,10 @@
     display: flex;
     width: 750px;
     flex-wrap: wrap;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-evenly;
   }
 </style>

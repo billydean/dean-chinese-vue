@@ -1,4 +1,11 @@
 <script setup lang="ts">
+  import { useFlagsStore } from '../stores/FlagStore';
+
+  const flags = useFlagsStore();
+
+  function toggleSearch() {
+    flags.openSearch = !flags.openSearch;
+  }
 </script>
 
 <template>
@@ -6,7 +13,7 @@
     <nav>
       <ul>
         <li>Home</li>
-        <li>Search</li>
+        <li @click="toggleSearch">Search</li>
         <li>Random</li>
         <li>Links</li>
       </ul>

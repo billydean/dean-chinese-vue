@@ -1,5 +1,9 @@
 <script setup lang="ts">
   import Footer from './components/Footer.vue'
+  import Search from './components/Search.vue';
+  import { useFlagsStore } from './stores/FlagStore';
+
+  const flags = useFlagsStore();
 </script>
 
 <template>
@@ -15,6 +19,7 @@
         </nav>
     </header>
   <RouterView />
+  <Search v-if="flags.openSearch"/>
   <Footer />
 </template>
 

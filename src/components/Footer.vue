@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
+
 <template>
   <footer>
     <nav>
@@ -11,4 +13,6 @@
     </nav>
   </footer>
 </template>
-<style></style>
+
+<style>
+</style>

@@ -12,7 +12,7 @@
 <template>
   <div class="desk">
   <Header />
-  <div class="card-deck">This is the body
+  <div class="card-deck">
     <Result />
     <Result />
     <Result />
@@ -25,9 +25,9 @@
     <Radical />
     <Radical />
     <Radical />
-    <Spotlight />
-    <SimilarScreen />
   </div>
+      <Spotlight />
+    <SimilarScreen />
   <Search />
   <Filter />
   <Footer />
@@ -36,10 +36,13 @@
 
 <style scoped>
   .desk {
-    width: 80vw;
+    width: 750px;
+    display: flex;
+    flex-direction: column;
   }
   .card-deck {
     display: flex;
-    width: 80vw;
+    width: 750px;
+    flex-wrap: wrap;
   }
 </style>

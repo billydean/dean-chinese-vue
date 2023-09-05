@@ -18,6 +18,7 @@
 
         </nav>
     </header>
+  
   <RouterView />
   <Search v-if="flags.openSearch"/>
   <Footer />
@@ -31,8 +32,8 @@
   }
   .card-deck {
     display: flex;
-    width: 750px;
     flex-wrap: wrap;
+    justify-content: space-evenly;
   }
   
   nav {

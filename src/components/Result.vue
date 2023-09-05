@@ -1,8 +1,11 @@
 <script setup lang="ts">
+defineProps<{
+        character?: String,
+}>()
 </script>
 
 <template>
-    <div class="card">Result</div>
+    <div class="card">{{ character }}</div>
 </template>
 
 <style>

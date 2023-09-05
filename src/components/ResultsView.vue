@@ -1,21 +1,15 @@
 <script setup lang="ts">
     import Result from './Result.vue'
+    import { useDictStore } from '../stores/DictStore';
+    const dict = useDictStore();
 </script>
 
 <template>
     <div class="card-deck">
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
-    <Result />
+    <Result v-for="item in dict.dictionary"
+            :character="item.string"
+            :key = "item.string"
+    />
   </div>
 </template>
 

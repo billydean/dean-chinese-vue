@@ -10,7 +10,7 @@
 
 <template>
   <footer>
-    <nav>
+    <nav class="bg-slate-200">
       <ul>
         <li @click="toggleSearch">Search</li>
         <li>Random</li>

@@ -69,16 +69,16 @@ button:focus-visible {
   /* width: 100px;
   height: 100px;
    */
-  width: 18%;
+  max-width: 200px;
+  width: 15vw;
   min-width: 100px;
-  margin: 1%;
   /* margin: 5px; */
   aspect-ratio: 1/1;
   }
 
 #app {
   width: 90vw;
-  max-width: 900px;
+  /* max-width: 900px; */
   margin: 0 auto;
   /* padding: 2rem; */
   text-align: center;

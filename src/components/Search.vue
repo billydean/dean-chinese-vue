@@ -9,4 +9,11 @@
     span {
         font-weight: bold;
     }
+    div {
+        position: fixed;
+        z-index: 30;
+        bottom: calc(10px + 2rem);
+        width: 80%;
+        margin: 5px;
+    }
 </style>

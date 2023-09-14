@@ -20,5 +20,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+    top: calc(20px + 2rem);
+    position: relative;
   }
 </style>

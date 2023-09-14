@@ -9,9 +9,9 @@
 <template>
     <header>
         <!-- <h1>This is a header</h1> -->
-        <nav class="bg-slate-200">
+        <nav class="bg-slate-200 bg-opacity-90">
           <!-- temporary while I figure out router -->
-          <RouterLink to="/" class="menu-item bg-slate-100">Home</RouterLink>
+          <RouterLink to="/" class="menu-item bg-slate-100 bg-opacity-100">Home</RouterLink>
           <RouterLink to="/results" class="menu-item bg-slate-100">Results</RouterLink>
           <RouterLink to="/radicals" class="menu-item bg-slate-100">Radicals</RouterLink>
           <RouterLink to="/about" class="menu-item bg-slate-100">About</RouterLink>
@@ -37,16 +37,18 @@
   } */
   header {
     width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    /* width: 100vw; */
+    z-index: 30;
+    background-image: url('./assets/chinese-writing.jpg');
+    background-size: cover;
   }
 
   nav {
     display: flex;
     /* justify-content: space-evenly; */
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    z-index: 30;
   }
 
   .menu-item {

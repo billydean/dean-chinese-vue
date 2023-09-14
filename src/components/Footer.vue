@@ -10,7 +10,7 @@
 
 <template>
   <footer>
-    <nav class="bg-slate-200">
+    <nav class="bg-slate-200 bg-opacity-90">
       <ul>
         <li @click="toggleSearch">Search</li>
         <li>Random</li>
@@ -21,7 +21,13 @@
 </template>
 <style scoped>
 footer {
-  width: 100%;
+  position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 30;
+    background-image: url('../assets/chinese-writing.jpg');
+    background-size: cover;
 }
 ul {
     display: flex;
@@ -34,15 +40,7 @@ li {
     display:flex;
     justify-content: center;
     align-items: center;
+    opacity: 100%;
 }
-  nav {
-    /* display: flex; */
-    /* justify-content: space-evenly; */
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100vw;
-    z-index: 30;
-  }
 
 </style>

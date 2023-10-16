@@ -3,10 +3,12 @@ import axios from 'axios';
 import { ref } from 'vue';
 
 export const useDictStore = defineStore('dict', () => {
-    const dictionary = ref([{"string":"\u5017"}])
+    const dictionary = ref([{"string":"\u5017"}]);
+
+    const input = ref('')
     async function fetchByPinYin() {
         try {
-            const data = await axios.get('http://ccdb.hemiola.com/characters/mandarin/peng2');
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}`);
             dictionary.value= data.data
             console.log(data.data)
         }
@@ -15,5 +17,5 @@ export const useDictStore = defineStore('dict', () => {
         }
     }
     
-    return { dictionary, fetchByPinYin }
+    return { input, dictionary, fetchByPinYin }
 })

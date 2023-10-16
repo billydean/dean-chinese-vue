@@ -10,7 +10,7 @@
 
 <template>
   <footer>
-    <nav class="bg-slate-200 bg-opacity-90">
+    <nav class="bg-slate-200 bg-opacity-80">
       <ul>
         <li @click="toggleSearch">Search</li>
         <li>Random</li>
@@ -27,7 +27,7 @@ footer {
     width: 100%;
     z-index: 30;
     background-image: url('../assets/chinese-writing.jpg');
-    background-size: cover;
+    background-size: 30%;
 }
 ul {
     display: flex;

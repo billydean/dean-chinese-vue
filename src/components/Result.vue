@@ -2,10 +2,13 @@
 defineProps<{
         character?: String,
 }>()
+
+import { useDictStore } from '../stores/DictStore';
+const store = useDictStore();
 </script>
 
 <template>
-    <div class="card">{{ character }}</div>
+    <div @click="console.log(store.input)" class="card">{{ character }}</div>
 </template>
 
 <style>

@@ -2,21 +2,25 @@
     import { useDictStore } from '../stores/DictStore';
     import { storeToRefs } from 'pinia';
     const { input }  = storeToRefs(useDictStore());
-
+    const store = useDictStore();
 
 </script>
 
 <template>
-    <div>This is the <span @click="console.log(input)">search</span> bar</div>
+    
     <section class="search-zone">
-        <form id="search">
+        <form @submit.prevent="" id="search">
             <div id="text-input">
                 <label for="text-search">
                 </label>
-                <input v-model="input" placeholder="Search for a character" name="text-input" id="text-search"  autocomplete="off" >
+                <input v-model="store.input" placeholder="Search for a character" name="text-input" id="text-search"  autocomplete="off" >
+                <button @click="store.fetchByPinYin(store.input)">Search</button>
+                <button @click="console.log(store.input)">Test</button>
             </div>
         </form>
     </section>
+    <div></div>
+    
 </template>
 
 <style scoped>

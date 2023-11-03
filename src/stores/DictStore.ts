@@ -4,6 +4,8 @@ import { ref } from 'vue';
 
 export const useDictStore = defineStore('dict', () => {
     const dictionary = ref([{"string":"\u5017"}])
+
+    const input = ref("")
     //ref or reactive for spotlight?
     const spotlight = ref({
         definition: 'DEFINITION',
@@ -13,9 +15,9 @@ export const useDictStore = defineStore('dict', () => {
         level: 'LEVEL'
     }) 
     
-    async function fetchByPinYin() {
+    async function fetchByPinYin(input: string) {
         try {
-            const data = await axios.get('http://ccdb.hemiola.com/characters/mandarin/peng2?fields=kDefinition,kMandarin,strokes,kFrequency');
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?fields=kDefinition,kMandarin,kTotalStrokes,kFrequency`);
             dictionary.value= data.data
             console.log(data.data)
         }
@@ -24,9 +26,6 @@ export const useDictStore = defineStore('dict', () => {
         }
     }
     
-    return { dictionary, fetchByPinYin }
-})
-
 // make a query builder
 // prefix for pinyin search
 // prefix for definition search
@@ -43,5 +42,5 @@ export const useDictStore = defineStore('dict', () => {
 // if so, calling function will just use non-reactive terms for its params
 
 //function builds prefix + filter + fields and then calls it through axios
-    return { input, dictionary, fetchByPinYin }
+    return { input, dictionary, spotlight, fetchByPinYin }
 })

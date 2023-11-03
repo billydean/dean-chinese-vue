@@ -65,6 +65,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* 
+  may need to use grid-area and grid-template-areas to divvy up card parts:
+    grade level, character, pronunciation(s), definition(with overflow?), stroke count
+*/
+
 .card {
   /* width: 100px;
   height: 100px;
@@ -74,7 +79,35 @@ button:focus-visible {
   min-width: 100px;
   /* margin: 5px; */
   aspect-ratio: 1/1;
-  }
+  display: grid;
+  grid-template:
+    "char char level" 15px
+    "char char ." 4fr
+    "pin pin pin" 1 fr
+    "def def ." 2fr
+    "def def strokes" 15px / 1fr 4fr 15px;
+    border-radius: 20% 10%;
+    }
+    
+.char {
+  grid-area: "char";
+} 
+
+.pin {
+  grid-area: "pin";
+}
+
+.level {
+  grid-area: "level";
+}
+
+.def {
+  grid-area: "def";
+}
+
+.strokes {
+  grid-area: "strokes";
+}
 
 #app {
   width: 90vw;

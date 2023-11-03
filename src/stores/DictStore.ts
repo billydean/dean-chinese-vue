@@ -43,3 +43,5 @@ export const useDictStore = defineStore('dict', () => {
 // if so, calling function will just use non-reactive terms for its params
 
 //function builds prefix + filter + fields and then calls it through axios
+    return { input, dictionary, fetchByPinYin }
+})

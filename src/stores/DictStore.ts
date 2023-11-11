@@ -17,13 +17,23 @@ export const useDictStore = defineStore('dict', () => {
     
     async function fetchByPinYin(input: string) {
         try {
-            const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?fields=kDefinition,kMandarin,kTotalStrokes,kFrequency`);
+            const data = await axios.get(queryBuilder('pinyin',input,'');
             dictionary.value= data.data
             console.log(data.data)
         }
         catch (error) {
             console.log(error)
         }
+    }
+    
+    function queryBuilder(prefix: string, input: string, filters: string): string {
+        const first = prefix === 'pinyin'
+            ? 'http://ccdb.hemiola.com/characters/mandarin/'
+            : '';
+        const second = '?';
+        const third = 'fields=kDefinition,kMandarin,kTotalStrokes,kFrequency';
+        
+        return first + input + second + third;
     }
     
 // make a query builder

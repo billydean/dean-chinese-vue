@@ -1,23 +1,26 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
+import { Entry } from '../types';
 
 export const useDictStore = defineStore('dict', () => {
-    const dictionary = ref([{"string":"\u5017"}])
+    const dictionary: Ref<Entry[]> = ref([])
 
     const input = ref("")
     //ref or reactive for spotlight?
-    const spotlight = ref({
-        definition: 'DEFINITION',
-        mandarin: 'MANDARIN',
-        strokes: 'STROKES',
-        frequency: 'FREQUENCY',
-        level: 'LEVEL'
+    const spotlight: Ref<Entry> = ref({
+        string: 'STRING',
+        kMandarin: 'MANDARIN',
+        kDefinition: 'DEFINITION',
+        kFrequency: 'FREQUENCY',
+        kSimplifiedVariant: 'NONE',
+        kTraditionalVariant: 'NONE',
+        kTotalStrokes: 'STROKES'
     }) 
     
     async function fetchByPinYin(input: string) {
         try {
-            const data = await axios.get(queryBuilder('pinyin',input,'');
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?filter=gb+big5a+simplified|gb+big5a+!simplifiable&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
             dictionary.value= data.data
             console.log(data.data)
         }
@@ -26,15 +29,15 @@ export const useDictStore = defineStore('dict', () => {
         }
     }
     
-    function queryBuilder(prefix: string, input: string, filters: string): string {
-        const first = prefix === 'pinyin'
-            ? 'http://ccdb.hemiola.com/characters/mandarin/'
-            : '';
-        const second = '?';
-        const third = 'fields=kDefinition,kMandarin,kTotalStrokes,kFrequency';
+    // function queryBuilder(prefix: string, input: string, filters: string): string {
+    //     const first = prefix === 'pinyin'
+    //         ? 'http://ccdb.hemiola.com/characters/mandarin/'
+    //         : '';
+    //     const second = '?';
+    //     const third = 'fields=kDefinition,kMandarin,kTotalStrokes,kFrequency';
         
-        return first + input + second + third;
-    }
+    //     return first + input + second + third;
+    // }
     
 // make a query builder
 // prefix for pinyin search

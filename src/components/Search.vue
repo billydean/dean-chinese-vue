@@ -15,7 +15,7 @@
                 </label>
                 <input v-model="store.input" placeholder="Search for a character" name="text-input" id="text-search"  autocomplete="off" >
                 <button @click="store.fetchByPinYin(store.input)">Search</button>
-                <button @click="console.log(store.input)">Test</button>
+                <button @click="console.log(store.dictionary)">Test</button>
             </div>
         </form>
     </section>

@@ -7,8 +7,11 @@
 <template>
     <div class="card-deck">
     <Result v-for="item in dict.dictionary"
-            :character="item.string"
+            :character = "item.string"
             :key = "item.string"
+            :pinyin = "item.kMandarin"
+            :definition = "item.kDefinition"
+            :strokes = "item.kTotalStrokes"
     />
   </div>
 </template>

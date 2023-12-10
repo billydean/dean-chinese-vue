@@ -7,7 +7,7 @@
         <nav class="bg-slate-200 flex flex-row items-center">
           <!-- temporary while I figure out router -->
           <RouterLink to="/" class="bg-slate-100 bg-opacity-75 basis-1/2">Home</RouterLink>
-          <RouterLink to="/results" class="menu-item bg-slate-100 basis-1/6">Results</RouterLink>
+          <!-- <RouterLink to="/results" class="menu-item bg-slate-100 basis-1/6">Results</RouterLink> -->
           <RouterLink to="/radicals" class="menu-item bg-slate-100 basis-1/6">Radicals</RouterLink>
           <RouterLink to="/about" class="menu-item bg-slate-100 basis-1/6">About</RouterLink>
 

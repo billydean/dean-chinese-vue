@@ -14,7 +14,7 @@
                 <label for="text-search">
                 </label>
                 <input v-model="store.input" placeholder="Search for a character" name="text-input" id="text-search"  autocomplete="off" >
-                <button @click="store.fetchByPinYin(store.input)">Search</button>
+                <RouterLink to="/results"><button @click="store.fetchByPinYin(store.input)">Search</button></RouterLink>
                 <button @click="console.log(store.dictionary)">Test</button>
             </div>
         </form>

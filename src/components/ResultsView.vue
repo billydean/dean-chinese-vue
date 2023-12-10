@@ -18,11 +18,11 @@
 
 <style scoped>
   .card-deck {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: minmax(1fr, 200px);
+    grid-gap: 20px;
     top: calc(20px + 2rem);
     position: relative;
   }

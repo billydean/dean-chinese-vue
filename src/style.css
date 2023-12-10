@@ -74,39 +74,47 @@ button:focus-visible {
   /* width: 100px;
   height: 100px;
    */
-  max-width: 200px;
+  /* max-width: 200px; */
   width: 15vw;
   min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* margin: 5px; */
   aspect-ratio: 1/1;
-  display: grid;
+  /* display: grid;
   grid-template:
-    "char char level" 15px
-    "char char ." 4fr
-    "pin pin pin" 1 fr
-    "def def ." 2fr
-    "def def strokes" 15px / 1fr 4fr 15px;
-    border-radius: 20% 10%;
+    "char char level" 10%
+    "char char level" 45%
+    "pin pin strokes" 15%
+    "def def strokes" 30% / 1fr 4fr 15px; */
     }
     
 .char {
   grid-area: "char";
+  background-color: lime;
+  font-size: 4rem;
 } 
 
 .pin {
   grid-area: "pin";
+  background-color: lightblue;
 }
 
 .level {
   grid-area: "level";
+  background-color: orange;
 }
 
 .def {
-  grid-area: "def";
+  background-color: yellow;
+  align-self: center;
 }
 
 .strokes {
-  grid-area: "strokes";
+  background-color: red;
+  align-self: end;
+ 
 }
 
 #app {

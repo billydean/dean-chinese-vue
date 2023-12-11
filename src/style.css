@@ -74,7 +74,7 @@ button:focus-visible {
   /* width: 100px;
   height: 100px;
    */
-  /* max-width: 200px; */
+  max-width: 200px;
   width: 15vw;
   min-width: 100px;
   display: flex;

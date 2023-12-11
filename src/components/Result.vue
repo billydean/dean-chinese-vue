@@ -38,6 +38,7 @@ defineProps<{
     .test {
         display:flex;
         background: grey;
+        width:fit-content;
     }
     .test:before {
         content: "";

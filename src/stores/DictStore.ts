@@ -21,8 +21,18 @@ export const useDictStore = defineStore('dict', () => {
     async function fetchByPinYin(input: string) {
         try {
             const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?filter=gb+big5a+simplified|gb+big5a+!simplifiable&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
-            dictionary.value= data.data
-            console.log(data.data)
+            const results: Entry[] = data.data
+
+         results.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ')[0])
+
+        const trial = results.filter(each => each.kMandarin.includes(input.toUpperCase()))
+
+       dictionary.value = trial;
+            
+            // filter((entry: Entry)=> { entry.kMandarin.split(' ')[0] == input })
+            // dictionary.value = results;
+            // console.log(results);
+        
         }
         catch (error) {
             console.log(error)

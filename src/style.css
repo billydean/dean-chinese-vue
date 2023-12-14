@@ -74,9 +74,9 @@ button:focus-visible {
   /* width: 100px;
   height: 100px;
    */
-  max-width: 200px;
-  width: 15vw;
-  min-width: 100px;
+  max-width: 250px;
+  width: 25vw;
+  min-width: 185px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

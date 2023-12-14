@@ -19,7 +19,7 @@ defineProps<{
             <div class="card1a">
                 <span class="char">{{ character }}</span>
                 <span>
-                    {{ pinyin.split(' ')[0] }}
+                    {{ pinyin }}
                 </span>
             </div>
             <div class="level">1</div>

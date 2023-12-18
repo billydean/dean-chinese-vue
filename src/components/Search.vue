@@ -32,7 +32,7 @@
                 <label for="def-search">
                 </label>
                 <input v-model="store.input" placeholder="Search by definition" name="def-input" id="def-search"  autocomplete="off" >
-                <RouterLink to="/results"><button @click="store.fetchByPinYin(store.input)">Search</button></RouterLink>
+                <RouterLink to="/results"><button @click="store.fetchByDef(store.input)">Search</button></RouterLink>
                 <button @click="console.log(store.dictionary)">Test</button>
             </div>
         </form>

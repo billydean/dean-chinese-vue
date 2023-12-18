@@ -9,17 +9,34 @@
 <template>
     
     <section class="search-zone">
-        <form @submit.prevent="" id="search">
-            <div id="text-input">
-                <label for="text-search">
+        <form @submit.prevent="">
+            <div class="text-input">
+                <label for="pin-search">
                 </label>
-                <input v-model="store.input" placeholder="Search for a character" name="text-input" id="text-search"  autocomplete="off" >
+                <input v-model="store.input" placeholder="Search by pronunciation" name="pin-input" id="pin-search"  autocomplete="off" >
+                <RouterLink to="/results"><button @click="store.fetchByPinYin(store.input)">Search</button></RouterLink>
+                <button @click="console.log(store.dictionary)">Test</button>
+            </div>
+        </form>
+        <form @submit.prevent="">
+            <div class="text-input">
+                <label for="char-search">
+                </label>
+                <input v-model="store.input" placeholder="Search by character" name="char-input" id="char-search"  autocomplete="off" >
+                <RouterLink to="/results"><button @click="store.fetchByChar(store.input)">Search</button></RouterLink>
+                <button @click="console.log(store.dictionary)">Test</button>
+            </div>
+        </form>
+        <form @submit.prevent="">
+            <div class="text-input">
+                <label for="def-search">
+                </label>
+                <input v-model="store.input" placeholder="Search by definition" name="def-input" id="def-search"  autocomplete="off" >
                 <RouterLink to="/results"><button @click="store.fetchByPinYin(store.input)">Search</button></RouterLink>
                 <button @click="console.log(store.dictionary)">Test</button>
             </div>
         </form>
     </section>
-    <div></div>
     
 </template>
 
@@ -35,7 +52,7 @@
         margin: 5px;
     }
 
-    #text-input label::before {
+    .text-input label::before {
         content: "Search for a character";
         font-size: 0;
         height: 0;

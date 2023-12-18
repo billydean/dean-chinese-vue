@@ -39,6 +39,23 @@ export const useDictStore = defineStore('dict', () => {
         }
     }
     
+    async function fetchByChar(input: string) {
+        try {
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/string/${input}?filter=gb+big5+simplified|gb+big5+!simplifiable&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
+
+            data.data.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ')[0])
+            dictionary.value = data.data
+            
+            // filter((entry: Entry)=> { entry.kMandarin.split(' ')[0] == input })
+            // dictionary.value = results;
+            // console.log(results);
+        
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
     // function queryBuilder(prefix: string, input: string, filters: string): string {
     //     const first = prefix === 'pinyin'
     //         ? 'http://ccdb.hemiola.com/characters/mandarin/'
@@ -65,5 +82,5 @@ export const useDictStore = defineStore('dict', () => {
 // if so, calling function will just use non-reactive terms for its params
 
 //function builds prefix + filter + fields and then calls it through axios
-    return { input, dictionary, spotlight, fetchByPinYin }
+    return { input, dictionary, spotlight, fetchByPinYin, fetchByChar }
 })

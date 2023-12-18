@@ -61,6 +61,7 @@ defineProps<{
         display: flex;
         justify-content: space-between;
         height: 40%;
+        container-type: inline-size;
         /* align-items: end; */
     }
 </style>

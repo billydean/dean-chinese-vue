@@ -93,7 +93,7 @@ button:focus-visible {
 .char {
   grid-area: "char";
   background-color: lime;
-  font-size: 4rem;
+  font-size: 9cqh;
 } 
 
 .pin {
@@ -108,7 +108,7 @@ button:focus-visible {
 
 .def {
   background-color: yellow;
-  align-self: center;
+  align-self: flex-start;
 }
 
 .strokes {

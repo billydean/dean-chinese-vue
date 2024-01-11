@@ -20,10 +20,10 @@ export const useDictStore = defineStore('dict', () => {
     
     async function fetchByPinYin(input: string) {
         try {
-            const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?filter=gb+big5+simplified|gb+big5+!simplifiable&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?filter=!simplifiable+gb&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
             const results: Entry[] = data.data
 
-         results.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ')[0])
+         results.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', '))
 
         const trial = results.filter(each => each.kMandarin.includes(input.toUpperCase()))
 
@@ -41,9 +41,9 @@ export const useDictStore = defineStore('dict', () => {
     
     async function fetchByChar(input: string) {
         try {
-            const data = await axios.get(`http://ccdb.hemiola.com/characters/string/${input}?filter=gb+big5+simplified|gb+big5+!simplifiable&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/string/${input}?filter=!simplifiable+gb&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
 
-            data.data.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ')[0])
+            data.data.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', '))
             dictionary.value = data.data
             
             // filter((entry: Entry)=> { entry.kMandarin.split(' ')[0] == input })
@@ -58,9 +58,9 @@ export const useDictStore = defineStore('dict', () => {
 
     async function fetchByDef(input: string) {
         try {
-            const data = await axios.get(`http://ccdb.hemiola.com/characters/definition/${input}?filter=gb+big5+simplified|gb+big5+!simplifiable&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
+            const data = await axios.get(`http://ccdb.hemiola.com/characters/definition/${input}?filter=!simplifiable+gb&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
 
-            data.data.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ')[0])
+            data.data.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', '))
             dictionary.value = data.data
             
             // filter((entry: Entry)=> { entry.kMandarin.split(' ')[0] == input })

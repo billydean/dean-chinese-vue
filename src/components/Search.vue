@@ -1,9 +1,31 @@
 <script setup lang="ts">
     import { useDictStore } from '../stores/DictStore';
     import { storeToRefs } from 'pinia';
+import { useFlagsStore } from '../stores/FlagStore';
+    import type { Entry } from '../types';
     const { input }  = storeToRefs(useDictStore());
-    const store = useDictStore();
+    const dict = useDictStore();
+    const flags = useFlagsStore();
 
+    function pinSearch() {
+        flags.searchSelect = 'pin'
+    }
+
+    function charSearch() {
+        flags.searchSelect = 'char'
+    }
+
+    function defSearch() {
+        flags.searchSelect = 'def'
+    }
+
+    // function testFilter(array: Entry[]) {
+    //     return array.filter(item => item.kMandarin.includes('SHUO1'))
+    // }
+
+    function testFilter(array: Entry[]) {
+        return array.filter(item => item.kTotalStrokes == '10')
+    }
 </script>
 
 <template>
@@ -11,42 +33,41 @@
     <section class="search-zone">
         <div class="switch-container">
             <div class="switch">
-                <input type="radio" id="radio-pin" name="radio"/>
+                <input type="radio" id="radio-pin" name="radio" @click="pinSearch()"/>
                 <label class="switch-labels" for="radio-pin">PRONUNCIATION</label>
-                <input type="radio" id="radio-char" name="radio"/>
+                <input type="radio" id="radio-char" name="radio" @click="charSearch()"/>
                 <label class="switch-labels" for="radio-char">CHARACTER</label>
-                <input type="radio" id="radio-def" name="radio"/>
+                <input type="radio" id="radio-def" name="radio" @click="defSearch()"/>
                 <label class="switch-labels" for="radio-def">DEFINITION</label>
                 <span id="switch-select"></span>
             </div>
         </div>
-        <form @submit.prevent="">
+        <form v-if="flags.searchSelect == 'pin'" @submit.prevent="">
             <div class="text-input">
                 <label for="pin-search">
                 </label>
-                <input v-model="store.input" placeholder="Search by pronunciation" name="pin-input" id="pin-search"  autocomplete="off" >
-                <RouterLink to="/results"><button @click="store.fetchByPinYin(store.input)">Search</button></RouterLink>
-                <button @click="console.log(store.dictionary)">Test</button>
+                <input v-model="dict.input" placeholder="Search by pronunciation" name="pin-input" id="pin-search"  autocomplete="off" >
+                <RouterLink to="/results"><button @click="dict.fetchByPinYin(dict.input)">Search</button></RouterLink>
             </div>
         </form>
-        <form @submit.prevent="">
+        <form v-if="flags.searchSelect == 'char'" @submit.prevent="">
             <div class="text-input">
                 <label for="char-search">
                 </label>
-                <input v-model="store.input" placeholder="Search by character" name="char-input" id="char-search"  autocomplete="off" >
-                <RouterLink to="/results"><button @click="store.fetchByChar(store.input)">Search</button></RouterLink>
-                <button @click="console.log(store.dictionary)">Test</button>
+                <input v-model="dict.input" placeholder="Search by character" name="char-input" id="char-search"  autocomplete="off" >
+                <RouterLink to="/results"><button @click="dict.fetchByChar(dict.input)">Search</button></RouterLink>
             </div>
         </form>
-        <form @submit.prevent="">
+        <form v-if="flags.searchSelect == 'def'" @submit.prevent="">
             <div class="text-input">
                 <label for="def-search">
                 </label>
-                <input v-model="store.input" placeholder="Search by definition" name="def-input" id="def-search"  autocomplete="off" >
-                <RouterLink to="/results"><button @click="store.fetchByDef(store.input)">Search</button></RouterLink>
-                <button @click="console.log(store.dictionary)">Test</button>
+                <input v-model="dict.input" placeholder="Search by definition" name="def-input" id="def-search"  autocomplete="off" >
+                <RouterLink to="/results"><button @click="dict.fetchByDef(dict.input)">Search</button></RouterLink>
             </div>
         </form>
+        <button @click="console.log(dict.dictionary)">Test</button>
+        <button @click="console.log(testFilter(dict.dictionary))">Filter</button>
     </section>
     
 </template>

@@ -23,7 +23,12 @@ export const useDictStore = defineStore('dict', () => {
             const data = await axios.get(`http://ccdb.hemiola.com/characters/mandarin/${input}?filter=!simplifiable+gb&fields=string,kMandarin,kDefinition,kTotalStrokes,kFrequency,kTraditionalVariant,kSimplifiedVariant`)
             const results: Entry[] = data.data
 
-         results.forEach((each: Entry) => each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', '))
+         results.forEach((each: Entry) => {
+            each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', ');
+            each.kFrequency = each.kFrequency == null 
+                ? '6'
+                : each.kFrequency
+         })
 
         const trial = results.filter(each => each.kMandarin.includes(input.toUpperCase()))
 
@@ -72,6 +77,49 @@ export const useDictStore = defineStore('dict', () => {
             console.log(error)
         }
     }
+
+    function sortByFrequencyAsc() {
+  
+        // @ts-ignore
+        dictionary.value.sort((a: Entry, b: Entry) => parseInt(a.kFrequency) - parseInt(b.kFrequency));
+    
+    }
+
+    function sortByFrequencyDesc() {
+  
+        // @ts-ignore
+        dictionary.value.sort((a: Entry, b: Entry) => parseInt(b.kFrequency) - parseInt(a.kFrequency));
+    
+    }
+
+    function sortByStrokesAsc() {
+  
+        // @ts-ignore
+        dictionary.value.sort((a: Entry, b: Entry) => parseInt(a.kTotalStrokes) - parseInt(b.kTotalStrokes));
+    
+    }
+
+    function sortByStrokesDesc() {
+  
+        // @ts-ignore
+        dictionary.value.sort((a: Entry, b: Entry) => parseInt(b.kTotalStrokes) - parseInt(a.kTotalStrokes));
+    
+    }
+
+    function sortByPinYinAsc() {
+  
+        // @ts-ignore
+        dictionary.value.sort((a: Entry, b: Entry) => parseInt(a.kMandarin) - parseInt(b.kMandarin));
+    
+    }
+
+    function sortByPinYinDesc() {
+  
+        // @ts-ignore
+        dictionary.value.sort((a: Entry, b: Entry) => parseInt(b.kMandarin) - parseInt(a.kMandarin));
+    
+    }
+
     // function queryBuilder(prefix: string, input: string, filters: string): string {
     //     const first = prefix === 'pinyin'
     //         ? 'http://ccdb.hemiola.com/characters/mandarin/'
@@ -98,5 +146,5 @@ export const useDictStore = defineStore('dict', () => {
 // if so, calling function will just use non-reactive terms for its params
 
 //function builds prefix + filter + fields and then calls it through axios
-    return { input, dictionary, spotlight, fetchByPinYin, fetchByChar, fetchByDef }
+    return { input, dictionary, spotlight, fetchByPinYin, fetchByChar, fetchByDef, sortByFrequencyAsc, sortByFrequencyDesc, sortByStrokesAsc, sortByStrokesDesc, sortByPinYinAsc, sortByPinYinDesc }
 })

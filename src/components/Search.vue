@@ -2,7 +2,7 @@
     import { useDictStore } from '../stores/DictStore';
     import { storeToRefs } from 'pinia';
 import { useFlagsStore } from '../stores/FlagStore';
-    import type { Entry } from '../types';
+  
     const { input }  = storeToRefs(useDictStore());
     const dict = useDictStore();
     const flags = useFlagsStore();
@@ -19,13 +19,6 @@ import { useFlagsStore } from '../stores/FlagStore';
         flags.searchSelect = 'def'
     }
 
-    // function testFilter(array: Entry[]) {
-    //     return array.filter(item => item.kMandarin.includes('SHUO1'))
-    // }
-
-    function testFilter(array: Entry[]) {
-        return array.filter(item => item.kTotalStrokes == '10')
-    }
 </script>
 
 <template>
@@ -67,7 +60,7 @@ import { useFlagsStore } from '../stores/FlagStore';
             </div>
         </form>
         <button @click="console.log(dict.dictionary)">Test</button>
-        <button @click="console.log(testFilter(dict.dictionary))">Filter</button>
+        <button @click="dict.sortByFrequencyDesc()">Sort Test</button>
     </section>
     
 </template>

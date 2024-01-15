@@ -12,6 +12,7 @@
             :pinyin = "item.kMandarin"
             :definition = "item.kDefinition"
             :strokes = "item.kTotalStrokes"
+            :frequency = "item.kFrequency"
     />
   </div>
 </template>

@@ -3,7 +3,8 @@ defineProps<{
         character: String,
         pinyin: String,
         definition: String,
-        strokes: String | null
+        strokes: String | null,
+        frequency: String | null
 }>()
 
 // import { useDictStore } from '../stores/DictStore';
@@ -22,7 +23,7 @@ defineProps<{
                     {{ pinyin }}
                 </span>
             </div>
-            <div class="level">1</div>
+            <div class="level">{{ frequency }}</div>
         </div>
         <div class="card2">
             <div class="def">{{ definition }}</div>

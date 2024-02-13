@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { Ref, ref } from 'vue';
 import { Entry } from '../types';
-import { convertPinYin } from '../pinyinify';
+import { convertPinYin, convertToneNumber } from '../pinyinify';
 
 export const useDictStore = defineStore('dict', () => {
     const dictionary: Ref<Entry[]> = ref([])
@@ -30,7 +30,6 @@ export const useDictStore = defineStore('dict', () => {
             // each.kMandarin = newtest;
             // console.log(each.kMandarin)
             each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', ');
-            console.log(each.kMandarin);
             each.kFrequency = each.kFrequency == null 
                 ? '6'
                 : each.kFrequency

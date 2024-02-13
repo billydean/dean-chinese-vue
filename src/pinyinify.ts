@@ -19,19 +19,6 @@ const toneMarks: toneArray = {
     v: ["\u00fc", "\u01d6", "\u01d8", "\u01da", "\u01dc", "\u00fc"]
 }
 
-/**
- * @return {Boolean} whether this string is a single alphabetical letter.
- */
-function isAlpha (str: string) {
-    return /^[A-Za-z]$/.test(str);
-}
-
-/**
- * @return {Boolean} is this string a valid pinyin vowel
- */
-function isPinyinVowel (str: string) {
-    return /^[aeiouv\u00fc]$/.test(str)
-}
 
 /**
  * Finds the last occurrence of a regular expression pattern match in string
@@ -89,4 +76,25 @@ export function convertPinYin (str: string) {
     }
     matter = matter.substring(0, toneIndex);
     return matter;
+}
+
+
+// look through tone index 
+// once found
+// add index number to end
+// replace character with plain vowel
+export function convertToneNumber (str: string) {
+    let matter = str.toLocaleLowerCase();
+    let tone = "";
+    if (/[\u0101\u0113\u012b\u014d\u016b\u01d6]/.test(str)) {
+        tone = "1";
+    } else if (/[\u00e1\u00e9\u00ed\u00f3\u00fa\u01d8]/.test(str)) {
+        tone = "2";
+    } else if (/[\u01ce\u011b\u01d0\u01d2\u01d4\u01da]/.test(str)) {
+        tone = "3";
+    } else if (/[\u00e0\u00e8\u00ec\u00f2\u00f9\u01dc]/.test(str)) {
+        tone = "4"
+    }
+    matter = matter + tone;
+    return matter.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
 }

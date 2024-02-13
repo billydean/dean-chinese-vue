@@ -2,6 +2,7 @@
     import { useDictStore } from '../stores/DictStore';
     import { storeToRefs } from 'pinia';
 import { useFlagsStore } from '../stores/FlagStore';
+import { convertToneNumber } from '../pinyinify';
   
     const { input }  = storeToRefs(useDictStore());
     const dict = useDictStore();
@@ -40,7 +41,7 @@ import { useFlagsStore } from '../stores/FlagStore';
                 <label for="pin-search">
                 </label>
                 <input v-model="dict.input" placeholder="Search by pronunciation" name="pin-input" id="pin-search"  autocomplete="off" >
-                <RouterLink to="/results"><button @click="dict.fetchByPinYin(dict.input.toUpperCase())">Search</button></RouterLink>
+                <RouterLink to="/results"><button @click="dict.fetchByPinYin(convertToneNumber(dict.input))">Search</button></RouterLink>
             </div>
         </form>
         <form v-if="flags.searchSelect == 'char'" @submit.prevent="">
@@ -59,7 +60,7 @@ import { useFlagsStore } from '../stores/FlagStore';
                 <RouterLink to="/results"><button @click="dict.fetchByDef(dict.input)">Search</button></RouterLink>
             </div>
         </form>
-        <button @click="console.log(dict.dictionary)">Test</button>
+        <button @click="console.log(convertToneNumber(dict.input))">Test</button>
         <button @click="dict.sortByFrequencyDesc()">Sort Test</button>
     </section>
     

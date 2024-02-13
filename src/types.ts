@@ -7,3 +7,8 @@ export interface Entry {
     kTraditionalVariant: string | null,
     kTotalStrokes: string | null
 }
+
+
+export interface toneArray {
+    [key: string]: string[]
+}

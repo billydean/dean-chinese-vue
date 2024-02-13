@@ -1,15 +1,14 @@
 <script setup lang="ts">
 defineProps<{
-        character: String,
-        pinyin: String,
-        definition: String,
-        strokes: String | null,
-        frequency: String | null
+        character: string,
+        pinyin: string,
+        definition: string,
+        strokes: string | null,
+        frequency: string | null
 }>()
 
 // import { useDictStore } from '../stores/DictStore';
 // const store = useDictStore();
-
 
 </script>
 

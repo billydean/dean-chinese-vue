@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { Ref, ref } from 'vue';
 import { Entry } from '../types';
+import { convertPinYin } from '../pinyinify';
 
 export const useDictStore = defineStore('dict', () => {
     const dictionary: Ref<Entry[]> = ref([])
@@ -24,15 +25,25 @@ export const useDictStore = defineStore('dict', () => {
             const results: Entry[] = data.data
 
          results.forEach((each: Entry) => {
+            // let test = each.kMandarin.split(' ').slice(0,2);
+            // let newtest = test.map(each => convertPinYin(each)).join(', ');
+            // each.kMandarin = newtest;
+            // console.log(each.kMandarin)
             each.kMandarin = each.kMandarin.split(' ').slice(0,2).join(', ');
+            console.log(each.kMandarin);
             each.kFrequency = each.kFrequency == null 
                 ? '6'
                 : each.kFrequency
          })
 
-        const trial = results.filter(each => each.kMandarin.includes(input.toUpperCase()))
+        const relevantResults = results.filter(each => each.kMandarin.includes(input.toUpperCase()))
 
-       dictionary.value = trial;
+        relevantResults.forEach((each: Entry) => {
+            let pinyinified = each.kMandarin.split(' ').map(str => convertPinYin(str)).join(', ');
+            each.kMandarin = pinyinified;
+        })
+
+       dictionary.value = relevantResults;
             
             // filter((entry: Entry)=> { entry.kMandarin.split(' ')[0] == input })
             // dictionary.value = results;

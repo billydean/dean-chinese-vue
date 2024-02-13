@@ -40,7 +40,7 @@ import { useFlagsStore } from '../stores/FlagStore';
                 <label for="pin-search">
                 </label>
                 <input v-model="dict.input" placeholder="Search by pronunciation" name="pin-input" id="pin-search"  autocomplete="off" >
-                <RouterLink to="/results"><button @click="dict.fetchByPinYin(dict.input)">Search</button></RouterLink>
+                <RouterLink to="/results"><button @click="dict.fetchByPinYin(dict.input.toUpperCase())">Search</button></RouterLink>
             </div>
         </form>
         <form v-if="flags.searchSelect == 'char'" @submit.prevent="">
